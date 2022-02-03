@@ -62,4 +62,11 @@ app.delete("/stores", (req, res) => {
   res.send("Store deleted");
 });
 
+app.delete("/stores/delete-all", (req, res) => {
+  db.query("DELETE FROM stores", (err, res) => {
+    if (err) throw err;
+  });
+  res.send("All stores deleted");
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
